@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AnasayfaViewModel @Inject constructor (var frepo: FilmlerRepository) : ViewModel() {
+class AnasayfaViewModel @Inject constructor(var frepo: FilmlerRepository) : ViewModel() {
 
     var filmlerlistesi = MutableLiveData<List<Filmler>>()
 
@@ -19,8 +19,7 @@ class AnasayfaViewModel @Inject constructor (var frepo: FilmlerRepository) : Vie
     }
 
     fun filmleriyukle() {
-        viewModelScope.launch {
-            filmlerlistesi.value = frepo.filmleriyukle()
-        }
+        filmlerlistesi = frepo.filmleriyukle()
+
     }
 }

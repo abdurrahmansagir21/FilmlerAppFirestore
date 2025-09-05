@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.filmlerapp.R
 import com.example.filmlerapp.databinding.FragmentAnasayfaBinding
 import com.example.filmlerapp.databinding.FragmentDetayBinding
@@ -27,9 +28,8 @@ class DetayFragment : Fragment() {
         val film = bundle.film
 
         binding.filmNesnesi = film
-        binding.ivDetay.setImageResource(
-            resources.getIdentifier(film.resim, "drawable", requireContext().packageName)
-        )
+        val url ="http://kasimadalan.pe.hu/filmler_yeni/resimler/${film.resim}"
+        Glide.with(this).load(url).override(500,750).into(binding.ivDetay)
 
         return binding.root
     }
